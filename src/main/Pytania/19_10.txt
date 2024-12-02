@@ -1,4 +1,4 @@
-*PYTANIA**
+**PYTANIA**
 
 1. Dlaczego w folderze "Test" nie zaciąga mi metod z lomboka?  Przykładowo nie zaciąga mi metody getDate. Musiałem
 stworzyć oddzielnę metodę w klasie BugList, aby ją wykorzystać przy testach.
