@@ -1,0 +1,3 @@
+- uzupełnij MongoDB folder
+- rozkmiń jak połaczyć CRUD z metodami
+- popraw licznik ID, aby łączył się z serwerem

@@ -2,6 +2,7 @@ import BugCointainer.BugList;
 import BugCointainer.BugTemplate;
 import BusinessLogic.BugService;
 import ENUMS.Priority;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,15 +14,18 @@ public class Test_Main {
     private BugList bugList;
     private BugService bugService;
 
-    @BeforeEach
-    public void setUp() {
-        bugList = new BugList();
-        bugService = new BugService(bugList);
-    }
+//    @BeforeEach
+//    public void setUp() {
+//        bugList = new BugList();
+//        bugService = new BugService(bugList);
+//    }
 
     @Test
     public void addBug_VarietyTests() {
-        LocalDate specificDate = LocalDate.of(2024,11,30);
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
+        LocalDate specificDate = LocalDate.of(2025,01,02);
 
         bugList.addBug(new BugTemplate(Priority.LOW,null,0,specificDate,"To jest przykładowy tytuł buga",null,null,"Jak Jankowski",
                 null,null, null));
@@ -40,6 +44,9 @@ public class Test_Main {
 
     @Test
     public void addBugWithPastDate() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,13);
 
         bugList.addBug(new BugTemplate(Priority.LOW,null,1,specificDate,"To jest przykładowy tytuł buga",null,null,"Jak Jankowski",
@@ -52,6 +59,9 @@ public class Test_Main {
 
     @Test
     public void addBug2() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,15);
         bugList.addBug(new BugTemplate(Priority.LOW,null,2,specificDate,"To jest drugi tytuł buga",null,null,"Jak Jankowski",
                 null,null, null));
@@ -61,6 +71,9 @@ public class Test_Main {
     }
     @Test
     public void getAllBugs() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,15);
         bugList.addBug(new BugTemplate(Priority.LOW,null,1,specificDate,"To jest przykładowy tytuł buga",null,null,"Jak Jankowski",
                 null,null, null));
@@ -68,6 +81,9 @@ public class Test_Main {
     }
     @Test
     public void getSingleBug() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,15);
         bugList.addBug(new BugTemplate(Priority.LOW,null,1,specificDate,"To jest przykładowy tytuł buga",null,null,"Jak Jankowski",
                 null,null, null));
@@ -76,6 +92,9 @@ public class Test_Main {
 
     @Test
     public void checkTitleGuardian() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,15);
         bugService.addBug(new BugTemplate(Priority.LOW,null,1,specificDate,"To jest przykładowy tytuł buga buga buga buga",null,null,"Jak Jankowski",
                 null,null, null));
@@ -83,8 +102,16 @@ public class Test_Main {
 
     @Test
     public void checkDescriptionGuardian() {
+        bugList = new BugList();
+        bugService = new BugService(bugList);
+
         LocalDate specificDate = LocalDate.of(2024,10,15);
         bugService.addBug(new BugTemplate(Priority.LOW,null,1,specificDate,"To jest przykładowy tytuł buga","Loorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus sodales fringilla. Donec ut lorem tincidunt, malesuada turpis bibendum, semper massa. Cras in fermentum sapien, at tempus odio. Quisque nunc magna, commodo quis dolor in, viverra bibendum velit. Aenean ornare nisi in purus porttitor tristique. Suspendisse potenti. Fusce lacinia orci et felis placerat vestibulum pharetra.",null,"Jak Jankowski",
                 null,null, null));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        bugList.clear();
     }
 }

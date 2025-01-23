@@ -25,6 +25,10 @@ public class BugList {
         return bugs.get(index).getId();
     }
 
+    public void clear() {
+        bugs.clear();  // Czyszczenie listy po zakończeniu testu
+    }
+
     public void getAllBugs() {
         if (bugs.isEmpty()) {
             System.out.println("Brak bugów do naprawy :)");
